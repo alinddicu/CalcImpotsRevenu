@@ -24,8 +24,7 @@ namespace CalcImpotsRevenu.Logic
         {
             return new ImpotResult(
                 CalculerImpotsPaliers(revenuNet.ToString()),
-                CalculerImpotRevenu(revenuNet.ToString())
-                );
+                CalculerImpotRevenu(revenuNet.ToString()));
         }
 
         private Double[] CalculerImpotsPaliers(String sRevenu)

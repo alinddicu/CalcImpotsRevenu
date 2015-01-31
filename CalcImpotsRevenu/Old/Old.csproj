@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Logic\Calcul.cs" />
     <Compile Include="Logic\Contexte.cs" />
-    <Compile Include="ICalcul.cs" />
     <Compile Include="Logic\Palier.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
