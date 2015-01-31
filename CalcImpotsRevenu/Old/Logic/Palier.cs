@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace CalcImpotsRevenu.Logic
 {
+    using System;
+
     public class Palier
     {
         Double _limiteInf;
