@@ -5,7 +5,7 @@ using Common;
 
 namespace CalcImpotsRevenu.Logic
 {
-    public class Calcul : ICalcul
+    public class Calcul
     {
         private Contexte _ctx;
 

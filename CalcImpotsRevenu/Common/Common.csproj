@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICalcul.cs" />
     <Compile Include="ImpotResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
