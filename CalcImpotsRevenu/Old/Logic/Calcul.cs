@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Common;
 
 namespace CalcImpotsRevenu.Logic
 {
-    public class Calcul
+    public class Calcul : ICalcul
     {
         private Contexte _ctx;
 
@@ -19,9 +20,17 @@ namespace CalcImpotsRevenu.Logic
             this.Ctx = ctx;
         }
 
-        public Double[] CalculerImpotsPaliers(String sRevenu)
+        public ImpotResult Calculer(int revenuNet)
         {
-            Double revenu = Convert.ToDouble(sRevenu)*(1-Ctx.TauxFrais/100);
+            return new ImpotResult(
+                CalculerImpotsPaliers(revenuNet.ToString()),
+                CalculerImpotRevenu(revenuNet.ToString())
+                );
+        }
+
+        private Double[] CalculerImpotsPaliers(String sRevenu)
+        {
+            Double revenu = Convert.ToDouble(sRevenu) * (1 - Ctx.TauxFrais / 100);
             Double[] resultat = new Double[Ctx.Paliers.Count];
 
             foreach (Palier p in Ctx.Paliers)
@@ -42,7 +51,7 @@ namespace CalcImpotsRevenu.Logic
 
                 for (int i = 0; i <= palierFinal; i++)
                 {
-                    if(i<palierFinal)
+                    if (i < palierFinal)
                     {
                         resultat[i] = Ctx.Paliers[i].CalculImpotPalier();
                     }
@@ -56,7 +65,7 @@ namespace CalcImpotsRevenu.Logic
             return resultat;
         }
 
-        public Double CalculerImpotRevenu(String revenu)
+        private Double CalculerImpotRevenu(String revenu)
         {
             Double ir = 0;
 

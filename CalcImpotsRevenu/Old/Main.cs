@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using CalcImpotsRevenu.Logic;
+using Common;
 
 namespace CalcImpotsRevenu
 {
@@ -48,10 +49,9 @@ namespace CalcImpotsRevenu
             this.Contexte.AjouterPalier(p4E, int.MaxValue, p4P, 4);
 
             Calcul calcul = new Calcul(this.Contexte);
-            Double[] resultat = calcul.CalculerImpotsPaliers(tbxRevenu.Text);
-            Double ir = calcul.CalculerImpotRevenu(tbxRevenu.Text);
+            var resultCalcul = calcul.Calculer(Convert.ToInt32(tbxRevenu.Text));
 
-            AfficherResultats(resultat, ir);
+            AfficherResultats(resultCalcul);
         }
 
         private Double Convertir(TextBox tbx)
@@ -59,14 +59,14 @@ namespace CalcImpotsRevenu
             return Convert.ToDouble(tbx.Text);
         }
 
-        private void AfficherResultats(Double[] resultats, Double ir)
+        private void AfficherResultats(ImpotResult resultCalcul)
         {
-            for (int i = 1; i < resultats.Length; i++)
+            for (int i = 1; i < resultCalcul.MontantParTranches.Length; i++)
             {
-                ((TextBox)this.Controls.Find(String.Format("tbxImpP{0}", i), false)[0]).Text = resultats[i].ToString(DOUBLE_FORMAT);    
+                ((TextBox)this.Controls.Find(String.Format("tbxImpP{0}", i), false)[0]).Text = resultCalcul.MontantParTranches[i].ToString(DOUBLE_FORMAT);    
             }
 
-            tbxImpotGlbl.Text = ir.ToString(DOUBLE_FORMAT);
+            tbxImpotGlbl.Text = resultCalcul.MontantTotal.ToString(DOUBLE_FORMAT);
         }
     }
 }
