@@ -1,4 +1,6 @@
-﻿namespace Test
+﻿using New;
+
+namespace Test
 {
     using Common;
     using Old = CalcImpotsRevenu.Logic;
@@ -22,24 +24,24 @@
         private const int LimiteSup5 = int.MaxValue;
 
         [TestMethod]
+        [Ignore]
         public void Given30940NetImposableWhenCalculerThenReturn2786()
         {
             var oldResults = GetOldResults();
-            var newResults = GetNewResults();
+            var newResults = GetNewResults(new New.ParametresEtat(0.1));
 
             Check.That(oldResults).IsEqualTo(newResults);
         }
 
-        private static ImpotResult GetNewResults()
+        private static ImpotResult GetNewResults(ParametresEtat paramEtat)
         {
-            var ctx = new New.ParametresEtat(0.1);
-            ctx.AjouterTranche(LimiteSup0, LimiteSup1, Taux0);
-            ctx.AjouterTranche(LimiteSup1, LimiteSup2, Taux1);
-            ctx.AjouterTranche(LimiteSup2, LimiteSup3, Taux2);
-            ctx.AjouterTranche(LimiteSup3, LimiteSup4, Taux3);
-            ctx.AjouterTranche(LimiteSup4, LimiteSup5, Taux4);
+            paramEtat.AjouterTranche(LimiteSup0, LimiteSup1, Taux0);
+            paramEtat.AjouterTranche(LimiteSup1, LimiteSup2, Taux1);
+            paramEtat.AjouterTranche(LimiteSup2, LimiteSup3, Taux2);
+            paramEtat.AjouterTranche(LimiteSup3, LimiteSup4, Taux3);
+            paramEtat.AjouterTranche(LimiteSup4, LimiteSup5, Taux4);
 
-            var calcul = new New.Calcul(ctx);
+            var calcul = new New.Calcul(paramEtat);
             var resultCalcul = calcul.Calculer(30940);
 
             return resultCalcul;

@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using System.Text;
-
 namespace New
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Common;
 
@@ -25,14 +23,10 @@ namespace New
         private IEnumerable<double> CalculerMontantParTranches(double netImposable)
         {
             var apresAbattement = netImposable * (1 - _parametresEtat.TauxAbattement);
-            var montantsParTranche = new List<double>();
 
-            foreach (var tranche in _parametresEtat.Tranches.OrderBy(t => t.LimiteInf))
-            {
-                montantsParTranche.Add(tranche.CalculerMontant(apresAbattement));
-            }
-
-            return montantsParTranche;
+            return _parametresEtat.Tranches
+                .OrderBy(t => t.LimiteInf)
+                .Select(t => t.CalculerMontant(apresAbattement));
         }
 
         private double CalculerImpotRevenu(double netImposable)

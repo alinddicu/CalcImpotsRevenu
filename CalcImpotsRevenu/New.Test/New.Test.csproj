@@ -54,10 +54,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CalculTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrancheTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{8562e010-7a47-4592-935a-9927b5b3231f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\New\New.csproj">
       <Project>{98cd9882-1fd5-4019-ad71-1e778a478733}</Project>
       <Name>New</Name>
