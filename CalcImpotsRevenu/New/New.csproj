@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calcul.cs" />
-    <Compile Include="Contexte.cs" />
-    <Compile Include="Palier.cs" />
+    <Compile Include="ParametresEtat.cs" />
+    <Compile Include="Tranche.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

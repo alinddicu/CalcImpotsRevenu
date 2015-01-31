@@ -10,4 +10,12 @@
 /CalcImpotsRevenu/New/obj/Debug
 /CalcImpotsRevenu/Test/obj/Debug
 /CalcImpotsRevenu/CalcImpotsRevenu.v12.suo
-/CalcImpotsRevenu
+/CalcImpotsRevenu/Common/bin/Debug
+/CalcImpotsRevenu/Common/obj/Debug
+/CalcImpotsRevenu/Common.Test/bin/Debug
+/CalcImpotsRevenu/Common.Test/obj/Debug
+/CalcImpotsRevenu/New/bin/Debug
+/CalcImpotsRevenu/New.Test/bin/Debug
+/CalcImpotsRevenu/New.Test/obj/Debug
+/CalcImpotsRevenu/NonRegression/bin/Debug
+/CalcImpotsRevenu/NonRegression/obj/Debug
