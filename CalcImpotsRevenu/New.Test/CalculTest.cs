@@ -37,5 +37,21 @@
             Check.That(resultCalcul.MontantParTranches[3]).IsEqualTo(427.5);
             Check.That(resultCalcul.MontantParTranches[4]).IsEqualTo(0);
         }
+
+        [TestMethod]
+        public void Given32786WhenCalculerThenReturn3285v595()
+        {
+            var paramEtat = new ParametresEtat(0.1);
+            paramEtat.AjouterTranche(LimiteSup0, LimiteSup1, Taux0);
+            paramEtat.AjouterTranche(LimiteSup1, LimiteSup2, Taux1);
+            paramEtat.AjouterTranche(LimiteSup2, LimiteSup3, Taux2);
+            paramEtat.AjouterTranche(LimiteSup3, LimiteSup4, Taux3);
+            paramEtat.AjouterTranche(LimiteSup4, LimiteSup5, Taux4);
+
+            var calcul = new Calcul(paramEtat);
+            var resultCalcul = calcul.Calculer(32786);
+
+            Check.That(resultCalcul.MontantTotal).IsEqualTo(3285.5950000000007);
+        }
     }
 }
